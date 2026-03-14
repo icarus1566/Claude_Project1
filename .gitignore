@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# Large Files & Models
+lfnovo-rag-system/models/
+lfnovo-rag-system/storage/
+production_images/
+*.tar
+*.zip
+
+# OS
+.DS_Store
+Thumbs.db
