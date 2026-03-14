@@ -7,27 +7,28 @@
 
 1. **Docker Desktop 설치**: [docker.com](https://www.docker.com/products/docker-desktop/)에서 다운로드 및 설치.
 2. **Python 설치**: [python.org](https://www.python.org/)에서 3.10 이상 버전 설치 (설치 시 'Add Python to PATH' 옵션 필수 선택).
-3. **Ollama 설치 (선택 사항)**: 로컬 LLM 구동을 원할 경우 [ollama.com](https://ollama.com/)에서 설치.
+3. **Git 설치**: [git-scm.com](https://git-scm.com/)에서 설치 (코드 관리용).
 
-## 2. 파일 복사 (압축 및 이동)
-가장 효율적인 방법은 외장 하드나 대용량 USB를 사용하는 것입니다.
+## 2. 파일 복사 (최초 설치 vs 증분 업데이트)
 
-1. **복사할 폴더**:
-   - `d:\ALL_AI\Claude_Project1` 전체 폴더
-   - **중요**: `lfnovo-rag-system\models` 폴더는 용량이 매우 크므로(수 GB), 반드시 포함되어 있는지 확인하십시오. (이 폴더가 있으면 새 노트북에서 다시 다운로드할 필요가 없습니다.)
-   
-2. **붙여넣기 경로**:
-   - 새 노트북에서도 가급적 동일한 경로(`d:\ALL_AI\Claude_Project1`)를 권장하지만, 환경에 따라 `C:\` 드라이브 등으로 변경 가능합니다. (이 경우 스크립트 내 경로 수정이 필요할 수 있습니다.)
+### 방법 A: 최초 전체 설치 (Full Setup)
+모델이 없는 신규 환경에 처음 설치할 때 사용하는 방법입니다.
+1. **복사할 폴더**: `d:\ALL_AI\Claude_Project1` 전체 폴더.
+2. **필수 포함**: `lfnovo-rag-system\models` (수 GB 용량의 모델 파일이 포함되어야 다시 받지 않습니다).
+
+### 방법 B: 증분 업데이트 (Incremental Update / Patch)
+이미 노트북에 시스템이 설치되어 있고, **코드나 설정만 변경된 경우** 효율적인 방법입니다.
+1. **복사 대상 (최소화)**: 대용량 폴더를 제외한 나머지 폴더만 압축하여 옮깁니다.
+   - `directives/`
+   - `execution/`
+   - `lfnovo-rag-system/` (단, 하위의 `models/`, `storage/` 폴더는 제외 가능)
+2. **이점**: 수십 MB 수준으로 용량이 줄어들어 전송과 업데이트가 매우 빠릅니다.
 
 ## 3. 환경 복구 및 실행
 파일 복사가 완료된 후 새 노트북에서 다음 과정을 수행합니다.
 
 1. **Docker Desktop 실행**: 엔진이 완전히 켜질 때까지 기다립니다.
-2. **파이썬 라이브러리 설치** (필요한 경우):
-   ```powershell
-   pip install huggingface_hub
-   ```
-3. **시스템 가동**:
+2. **시스템 가동**:
    `execution\docker_manage.py` 스크립트를 사용하여 서비스를 시작합니다.
    ```powershell
    python [복사한경로]\execution\docker_manage.py --restart
@@ -40,4 +41,4 @@
 
 ---
 > [!TIP]
-> 모델 파일(`bge-m3`)을 복사하는 것이 가장 핵심입니다. 인터넷 속도가 느린 환경이라면 복사하는 것이 다운로드보다 훨씬 빠릅니다.
+> 모델 파일(`bge-m3`)은 한 번만 제대로 옮겨두면, 이후에는 코드만 가볍게 업데이트하며 사용할 수 있습니다.
