@@ -3,7 +3,7 @@ import os
 
 # Configuration
 IMAGES = [
-    "rag-api",
+    "common-api",
     "ollama/ollama:latest",
     "ghcr.io/open-webui/open-webui:main",
     "qdrant/qdrant:latest",
